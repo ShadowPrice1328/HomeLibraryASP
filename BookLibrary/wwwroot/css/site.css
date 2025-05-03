@@ -2,6 +2,10 @@ html {
   font-size: 14px;
 }
 
+p, h1, h2, h3, span,a {
+  font-family: Bahnschrift Light;
+}
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -19,11 +23,13 @@ html {
 
 body {
     position: relative;
-    margin: 0;
+    margin: 0 !important;
     margin-bottom: 60px;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
+    overflow: auto;
     cursor: url("../assets/cursor.png"), auto;
+    display: flex;
+    flex-direction: column;
 }
 
 body::before {
@@ -57,4 +63,23 @@ a {
     mask-repeat: no-repeat;
     -webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
+}
+
+.frame {
+  backdrop-filter: blur(2px);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  border-radius: 10px;
+  padding: 35px;
+  width: auto;
+}
+
+@media (max-width: 768px) {
+  .frame {
+    padding: 15px; /* Менший паддінг на мобільних */
+  }
+}
+
+li a:hover {
+  transform: scale(1.25);
+  transition: transform 250ms ease;
 }

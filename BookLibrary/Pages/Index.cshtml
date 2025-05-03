@@ -5,5 +5,28 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4" style="color:white">Welcome</h1>
+    <h1 class="display-4" style="color:white; margin-top: 2rem;">Welcome</h1>
+    @if(Model.BooksTotalCount > 0)
+    {
+        <p style="color: white; font-size: 1.5rem; margin-top: 2rem; margin-bottom: 0;">Recently added books:</p>
+    }
+
+<div class="row">
+    <div class="align-items-center justify-content-center container frame card-group" style="margin-top: 2rem; margin-bottom: 2rem;">
+        @if (Model.BooksTotalCount == 0)
+        {
+            <img src="../assets/bookshelf_empty.png" alt="Empty Bookshelf" style="height: 12rem; margin-right: 3rem;">
+            <div>
+                <p style="color: white; font-size: 2rem; margin: 0;">Your library is empty</p>
+                <p style="color: white; font-size: 1.5rem; margin: 0.5rem 0 0;">Fix it!</p>
+            </div> 
+        }
+        else
+        {
+            foreach (var book in Model.Books)
+            {
+                <vc:book-preview item="book"></vc:book-preview>
+            }
+        }
+    </div>
 </div>
