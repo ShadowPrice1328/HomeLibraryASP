@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/BookLibrary.styles.css" asp-append-version="true" />
+
+    <partial name="_Favicons"/>
 </head>
 <body>
     <header>
@@ -40,6 +42,7 @@
 
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -48,7 +51,7 @@
 
     <footer class="footer bg-body" style="--bs-bg-opacity: .6;">
         <div class="container">
-            <span style="color:white">&copy; 2025 - HomeLibrary -</span> <a asp-area="" asp-page="/About" class="text-decoration-none" style="color:cyan">About Us</a>
+            <span style="color:white">&copy; 2025 - HomeLibrary - <a href="https://github.com/ShadowPrice1328/HomeLibraryASP" class="text-decoration-none" style="color:cyan">GitHub</a>
         </div>
     </footer>
 
