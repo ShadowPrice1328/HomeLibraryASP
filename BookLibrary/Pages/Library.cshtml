@@ -1,0 +1,65 @@
+@page
+@model LibraryModel
+@{
+    ViewData["Title"] = "Library";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+
+<div class="row align-items-center">
+    <div class="col-md-8 d-flex">
+        <form class="d-flex">
+            <div class="input-group">
+                <input class="form-control" style="background-color: white;" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-secondary bg-body border-0 px-4" type="submit">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+        </form>
+        <button class="btn btn-secondary bg-body border-0 btn-sm dropdown-toggle ms-2 me-2" style="font-weight: 16px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Sort by
+        </button>
+        <ul class="dropdown-menu">
+            <li class="dropdown-item">Title</li>
+            <li class="dropdown-item">Year</li>
+            <li class="dropdown-item">Author</li>
+        </ul>
+        <button class="btn btn-success">
+            <span style="font-size: 1.2rem; vertical-align: middle; padding: 0">+</span> Add book
+        </button>
+    </div>
+</div>
+
+
+@if (Model.BooksTotalCount > 0)
+{
+<div class="frame card-group" style="margin-top: 2rem; margin-bottom: 2rem; text-align: center;">
+    @foreach (var book in Model.Books)
+    {
+        <div class="no-hover-effect" style="display: inline-block; margin: 0.5rem; text-align: center;">
+            <vc:book-preview item="book"></vc:book-preview>
+            <div class="action-buttons d-flex justify-content-center mt-2">
+                <button class="btn mx-1" style="width: 40px; height: 40px;">
+                    <i class="fa-solid fa-info"></i>
+                </button>
+                <button class="btn mx-1" style="width: 40px; height: 40px; ">
+                    <i class="fa-solid fa-pen"></i>
+                </button>
+                <button class="btn mx-1" style="width: 40px; height: 40px;">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </div>
+        </div>
+    }
+</div>
+}
+else
+{
+    <div class="align-items-center justify-content-center container frame card-group" style="margin-top: 2rem; margin-bottom: 2rem;">
+        <img src="../assets/bookshelf_empty.png" alt="Empty Bookshelf" style="height: 12rem; margin-right: 3rem;">
+        <div>
+            <p style="color: white; font-size: 2rem; margin: 0;">Your library is empty</p>
+            <p style="color: white; font-size: 1.5rem; margin: 0.5rem 0 0;">Fix it!</p>
+        </div> 
+    </div>
+}

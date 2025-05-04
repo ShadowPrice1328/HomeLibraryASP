@@ -16,6 +16,10 @@ p, h1, h2, h3, span,a {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
+.btn {
+  font-family: Bahnschrift Light;
+}
+
 html {
   position: relative;
   min-height: 100%;
@@ -70,16 +74,70 @@ a {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   border-radius: 10px;
   padding: 35px;
-  width: auto;
+  display: grid; /* Вмикаємо Grid Layout */
+  gap: 1rem; /* Відстань між елементами */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Автоматичне вирівнювання */
 }
 
 @media (max-width: 768px) {
   .frame {
     padding: 15px; /* Менший паддінг на мобільних */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Зменшення ширини колонок */
   }
 }
+
 
 li a:hover {
   transform: scale(1.25);
   transition: transform 250ms ease;
+}
+
+li {
+  font-family: Bahnschrift Light;
+}
+.book-card {
+  margin: 0.5rem;
+}
+
+.book-card:hover {
+  transform: scale(1.1);
+  transition: transform 250ms ease;
+}
+
+.no-hover-effect .book-card:hover {
+  transform: none;
+  transition: none;
+}
+
+.book-image {
+  cursor: url("../assets/Pointer_openhand.webp"), auto;
+  max-width: 150px;
+}
+
+.btn:hover {
+  cursor: url("../assets/Pointer_openhand.webp"), auto;
+}
+
+.action-buttons {
+  margin-top: -30px !important;
+}
+
+.action-buttons button {
+  background-color: #212529;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px;
+  transition: transform 0.2s ease-in-out;
+  opacity: 0.8;
+  border: 1px solid white;
+}
+
+.action-buttons button:hover {
+  transform: scale(1.1);
+}
+
+.action-buttons i {
+  font-size: 1rem;
+  color: white;
 }
