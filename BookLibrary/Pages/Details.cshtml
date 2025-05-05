@@ -1,0 +1,49 @@
+@page
+@model DetailsModel
+
+@{
+    ViewData["Title"] = "Book Details";
+}
+<div class="mt-5" style="display: flex; justify-content: center; align-items: center; margin: 0;">
+    <div class="frame">
+        <div class="col no-hover-effect text-center">
+            <img src="../assets/Images/@(Model.Book.Image)" 
+                 class="card-img-top img-fluid mx-auto book-image-details" 
+                 style="cursor: url('../assets/cursor.png'), auto;" 
+                 alt="@Model.Book.Title">
+        </div>
+        <div>
+            <h1>@Model.Book.Title</h1>
+            <p>@Model.Book.Description</p>
+            <ul style="color: white;">
+                <li><strong>Year:</strong> @Model.Book.Year</li>
+                <li><strong>Source:</strong> @Model.Book.Source</li>
+                <li><strong>Is Lent:</strong> @(Model.Book.IsLent ? "Yes" : "No")</li>
+                <li><strong>Authors:</strong> 
+                    @foreach (var author in Model.Book.Authors)
+                    {
+                        <span>@author.FirstName @author.LastName</span><br />
+                    }
+                </li>
+                <li><strong>Genres:</strong> 
+                    @foreach (var genre in Model.Book.Genres)
+                    {
+                        <span>@genre.Name</span><br />
+                    }
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+       
+<div class="action-buttons d-flex justify-content-center mt-4" style="margin-top: 2rem !important;">
+    <button class="btn btn-dark mx-2" style="width: 50px; height: 50px;" onclick="location.href='/Library'">
+        <i class="fa-solid fa-left-long"></i>
+    </button>
+    <button class="btn btn-dark mx-2" style="width: 50px; height: 50px;">
+        <i class="fa-solid fa-pen"></i>
+    </button>
+    <button class="btn btn-dark mx-2" style="width: 50px; height: 50px;">
+        <i class="fa-solid fa-trash"></i>
+    </button>
+</div>

@@ -1,9 +1,11 @@
 html {
   font-size: 14px;
+  color: white;
 }
 
-p, h1, h2, h3, span,a {
+p, h1, h2, h3, span, a, strong {
   font-family: Bahnschrift Light;
+  color: white;
 }
 
 @media (min-width: 768px) {
@@ -140,4 +142,11 @@ li {
 .action-buttons i {
   font-size: 1rem;
   color: white;
+}
+
+.book-image-details {
+  width: 80%;
+  max-width: 200px;
+  margin: 0 auto;
+  display: block;
 }
