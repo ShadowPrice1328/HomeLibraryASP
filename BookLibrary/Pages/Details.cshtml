@@ -43,7 +43,9 @@
     <button class="btn btn-dark mx-2" style="width: 50px; height: 50px;" onclick="location.href='/Edit?id=@Model.Book.Id'">
         <i class="fa-solid fa-pen"></i>
     </button>
-    <button class="btn btn-dark mx-2" style="width: 50px; height: 50px;">
+    <button class="btn btn-dark mx-2" style="width: 50px; height: 50px;" onclick="confirmDelete()">
         <i class="fa-solid fa-trash"></i>
     </button>
 </div>
+
+<script src="../js/confirmDelete.js">
