@@ -42,20 +42,20 @@
                 <div class="mb-3">
                     <label for="IsLent" class="form-label"><strong>Is Lent:</strong></label>
                     <select id="IsLent" name="Book.IsLent" class="form-control">
-                        <option value="true" selected="@Model.Book.IsLent">Yes</option>
-                        <option value="false" selected="@(!Model.Book.IsLent)">No</option>
+                        <option value="true" selected="@Model.Book.Lent">Yes</option>
+                        <option value="false" selected="@(!Model.Book.Lent)">No</option>
                     </select>
                 </div>
                 <div class="mb-3">
                     <label for="Authors" class="form-label"><strong>Authors:</strong></label>
                     <input type="text" id="Authors" name="Book.Authors" 
-                           value="@string.Join(", ", Model.Book.Authors.Select(a => a.FirstName + " " + a.LastName))" 
+                           value="@string.Join(", ", Model.Book.IdAuthors.Select(a => a.FirstName + " " + a.LastName))" 
                            class="form-control" />
                 </div>
                 <div class="mb-3">
                     <label for="Genres" class="form-label"><strong>Genres:</strong></label>
                     <input type="text" id="Genres" name="Book.Genres" 
-                           value="@string.Join(", ", Model.Book.Genres.Select(g => g.Name))" 
+                           value="@string.Join(", ", Model.Book.IdGenres.Select(g => g.Name))" 
                            class="form-control" />
                 </div>
                 <div class="d-flex justify-content-center mt-4">

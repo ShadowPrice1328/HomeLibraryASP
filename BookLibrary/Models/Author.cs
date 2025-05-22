@@ -1,9 +1,15 @@
-namespace BookLibrary.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace BookLibrary.Models;
+
+public partial class Author
 {
-    public class Author
-    {
-        public int Id { get; set; }
-        public string? FirstName { get; set; }
-        public string? LastName { get; set; }
-    }
+    public int IdAuthor { get; set; }
+
+    public string FirstName { get; set; } = null!;
+
+    public string LastName { get; set; } = null!;
+
+    public virtual ICollection<Book> IdBooks { get; set; } = new List<Book>();
 }

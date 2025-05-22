@@ -1,7 +1,7 @@
 @model BookLibrary.Models.Book
 
 <div class="book-card">
-    <img src="../assets/Images/@(Model.Image)" class="card-img-top img-fluid mx-auto book-image" alt="..."  onclick="location.href = '/Details?id=@Model.Id'">
+    <img src="../assets/Images/@(Model.Image)" class="card-img-top img-fluid mx-auto book-image" alt="..."  onclick="location.href = '/Details?id=@Model.IdBook'">
     <div class="card-body">
       <p style="color:white; white-space: wrap; font-size: 1rem;">@Model.Title</p>
     </div>

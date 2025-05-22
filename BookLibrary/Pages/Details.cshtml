@@ -18,15 +18,15 @@
             <ul style="color: white;">
                 <li><strong>Year:</strong> @Model.Book.Year</li>
                 <li><strong>Source:</strong> @Model.Book.Source</li>
-                <li><strong>Is Lent:</strong> @(Model.Book.IsLent ? "Yes" : "No")</li>
+                <li><strong>Is Lent:</strong> @(Model.Book.Lent ? "Yes" : "No")</li>
                 <li><strong>Authors:</strong> 
-                    @foreach (var author in Model.Book.Authors)
+                    @foreach (var author in Model.Book.IdAuthors)
                     {
                         <span>@author.FirstName @author.LastName</span><br />
                     }
                 </li>
                 <li><strong>Genres:</strong> 
-                    @foreach (var genre in Model.Book.Genres)
+                    @foreach (var genre in Model.Book.IdGenres)
                     {
                         <span>@genre.Name</span><br />
                     }
@@ -40,7 +40,7 @@
     <button class="btn btn-dark mx-2" style="width: 50px; height: 50px;" onclick="location.href='/Library'">
         <i class="fa-solid fa-left-long"></i>
     </button>
-    <button class="btn btn-dark mx-2" style="width: 50px; height: 50px;" onclick="location.href='/Edit?id=@Model.Book.Id'">
+    <button class="btn btn-dark mx-2" style="width: 50px; height: 50px;" onclick="location.href='/Edit?id=@Model.Book.IdBook'">
         <i class="fa-solid fa-pen"></i>
     </button>
     <button class="btn btn-dark mx-2" style="width: 50px; height: 50px;" onclick="confirmDelete()">

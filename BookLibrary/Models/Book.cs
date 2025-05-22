@@ -1,17 +1,25 @@
-namespace BookLibrary.Models
-{
-    public class Book
-    {
-        public int Id { get; set; }
-        public string? Title { get; set; }
-        public string? Description { get; set; }
-        public int Year { get; set; }
-        public string? Image { get; set; }
-        public bool IsLent {  get; set; }
-        public string? Source { get; set; }
+﻿using System;
+using System.Collections.Generic;
 
-        // Many-to-Many
-        public List<Author>? Authors { get; set; }
-        public List<Genre>? Genres { get; set; }
-    }
+namespace BookLibrary.Models;
+
+public partial class Book
+{
+    public int IdBook { get; set; }
+
+    public DateOnly Year { get; set; }
+
+    public string Description { get; set; } = null!;
+
+    public string Title { get; set; } = null!;
+
+    public string Image { get; set; } = null!;
+
+    public string Source { get; set; } = null!;
+
+    public bool Lent { get; set; }
+
+    public virtual ICollection<Author> IdAuthors { get; set; } = new List<Author>();
+
+    public virtual ICollection<Genre> IdGenres { get; set; } = new List<Genre>();
 }

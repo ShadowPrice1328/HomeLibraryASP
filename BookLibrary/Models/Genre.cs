@@ -1,8 +1,13 @@
-namespace BookLibrary.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace BookLibrary.Models;
+
+public partial class Genre
 {
-    public class Genre
-    {
-        public int Id { get; set; }
-        public string? Name { get; set; }
-    }
+    public int IdGenre { get; set; }
+
+    public string Name { get; set; } = null!;
+
+    public virtual ICollection<Book> IdBooks { get; set; } = new List<Book>();
 }
