@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using BookLibrary.Models;
-using BookLibrary.Data;
+using BookLibrary.Interfaces;
 
 namespace BookLibrary.Pages;
 
@@ -8,13 +8,11 @@ public class LibraryModel : PageModel
 {
     private readonly ILogger<LibraryModel> _logger;
     private List<Book> _books;
-    private List<Author> _authors;
-    private List<Genre> _genres;
-    private readonly AppDbContext _appDbContext;
-    public LibraryModel(ILogger<LibraryModel> logger, AppDbContext appDbContext)
+    private readonly IBookRepository _bookRepository;
+    public LibraryModel(ILogger<LibraryModel> logger, IBookRepository bookRepository)
     {
         _logger = logger;
-        _appDbContext = appDbContext;
+        _bookRepository = bookRepository;
     }
 
     public List<Book> Books { get; set; }
@@ -22,12 +20,8 @@ public class LibraryModel : PageModel
 
     public void OnGet()
     {
-        _authors = _appDbContext.Authors.ToList();
-
-        _genres = _appDbContext.Genres.ToList();
-
-        _books = _appDbContext.Books.ToList();
-        
+        _books = _bookRepository.ReadBooks();
+    
         Books = _books;
         BooksTotalCount = _books.Count;
     }

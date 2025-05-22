@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using BookLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
 using BookLibrary.Data;
+using BookLibrary.Interfaces;
 
 namespace BookLibrary.Pages;
 
@@ -9,24 +10,18 @@ public class DetailsModel : PageModel
 {
     private readonly ILogger<DetailsModel> _logger;
     private List<Book> _books;
-    private List<Author> _authors;
-    private List<Genre> _genres;
     private readonly AppDbContext _appDbContext;
-    public DetailsModel(ILogger<DetailsModel> logger, AppDbContext appDbContext)
+    private readonly IBookRepository _bookRepository;
+    public DetailsModel(ILogger<DetailsModel> logger, IBookRepository bookRepository)
     {
-        _appDbContext = appDbContext;
+        _bookRepository = bookRepository;
         _logger = logger;
     }
 
     public Book Book { get; set; }
     public IActionResult OnGet(int id)
     {
-        _authors = _appDbContext.Authors.ToList();
-        _genres = _appDbContext.Genres.ToList();
-
-        _books = _appDbContext.Books.ToList();
-
-        Book? _book = _books.FirstOrDefault(b => b.IdBook == id);
+        Book? _book = _bookRepository.ReadBook(id);
 
         if (_book == null) 
             return NotFound();

@@ -2,7 +2,7 @@ using BookLibrary.Models;
 
 namespace BookLibrary.Interfaces
 {
-    interface IBookRepository
+    public interface IBookRepository
     {
         /// <summary>
         /// Adds new Book record to database
@@ -22,7 +22,7 @@ namespace BookLibrary.Interfaces
         /// </summary>
         /// <param name="id">Id of desired _book</param>
         /// <returns>Book item</returns>
-        Book ReadBook(int id);
+        Book? ReadBook(int id);
 
         /// <summary>
         /// Updates _book in database
