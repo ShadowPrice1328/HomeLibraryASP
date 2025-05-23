@@ -14,7 +14,7 @@ public class MaximumYearValidatorAttribute: ValidationAttribute
     {
         if (value != null)
         {
-            int providedYear = (int)value;
+            int providedYear = ((DateOnly)value).Year;
 
             if (providedYear > MaximumYear || providedYear < 1)
             {

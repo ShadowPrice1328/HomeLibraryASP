@@ -21,6 +21,7 @@
 
         <div class="col-12 col-md-8">
             <form method="post" enctype="multipart/form-data">
+            <input type="hidden" name="Book.Image" />
                 <div class="mb-3">
                     <label for="Title" class="form-label"><strong>Title:</strong></label>
                     <input type="text" id="Title" name="Book.Title" class="form-control" placeholder="Enter book title" />
@@ -31,7 +32,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="Year" class="form-label"><strong>Year:</strong></label>
-                    <input type="number" id="Year" name="Book.Year" class="form-control" placeholder="Enter year of publication" />
+                    <input type="number" id="Year" name="YearInput" class="form-control" placeholder="Enter year of publication" />
                 </div>
                 <div class="mb-3">
                     <label for="Source" class="form-label"><strong>Source:</strong></label>
@@ -46,12 +47,12 @@
                 </div>
                 <div class="mb-3">
                     <label for="Authors" class="form-label"><strong>Authors:</strong></label>
-                    <input type="text" id="Authors" name="Book.Authors" 
+                    <input type="text" id="Authors" name="Authors" 
                            class="form-control" placeholder="Enter authors (comma-separated)" />
                 </div>
                 <div class="mb-3">
                     <label for="Genres" class="form-label"><strong>Genres:</strong></label>
-                    <input type="text" id="Genres" name="Book.Genres" 
+                    <input type="text" id="Genres" name="Genres" 
                            class="form-control" placeholder="Enter genres (comma-separated)" />
                 </div>
                 <div class="d-flex justify-content-center mt-4">
@@ -80,3 +81,5 @@
         }
     });
 </script>
+
+<script src="/js/uploadCover.js"></script>
