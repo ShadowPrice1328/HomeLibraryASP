@@ -7,7 +7,8 @@
 <div class="container mt-5">
     <div class="row justify-content-center align-items-start g-4">
         <div class="col-12 col-md-4 text-center">
-            <img src="../assets/Images/@(Model.Book.Image)" 
+            <img id="coverPreview"
+                 src="../assets/Images/@(Model.Book.Image)" 
                  class="card-img-top img-fluid mx-auto book-image-details" 
                  style="cursor: url('../assets/cursor.png'), auto;" 
                  alt="@Model.Book.Title">
@@ -19,6 +20,8 @@
 
         <div class="col-12 col-md-8">
             <form method="post" enctype="multipart/form-data">
+                <input type="hidden" name="IdBook" value="@Model.Book.IdBook"/>
+                <input type="hidden" name="Book.Image" value="@Model.Book.Image"/>
                 <div class="mb-3">
                     <label for="Title" class="form-label"><strong>Title:</strong></label>
                     <input type="text" id="Title" name="Book.Title" 
@@ -31,8 +34,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="Year" class="form-label"><strong>Year:</strong></label>
-                    <input type="number" id="Year" name="Book.Year" 
-                           value="@Model.Book.Year" class="form-control" />
+                    <input type="number" id="Year" name="YearInput" 
+                           value="@Model.Book.Year.Year" class="form-control" />
                 </div>
                 <div class="mb-3">
                     <label for="Source" class="form-label"><strong>Source:</strong></label>
@@ -48,13 +51,13 @@
                 </div>
                 <div class="mb-3">
                     <label for="Authors" class="form-label"><strong>Authors:</strong></label>
-                    <input type="text" id="Authors" name="Book.Authors" 
+                    <input type="text" id="Authors" name="Authors" 
                            value="@string.Join(", ", Model.Book.IdAuthors.Select(a => a.FirstName + " " + a.LastName))" 
                            class="form-control" />
                 </div>
                 <div class="mb-3">
                     <label for="Genres" class="form-label"><strong>Genres:</strong></label>
-                    <input type="text" id="Genres" name="Book.Genres" 
+                    <input type="text" id="Genres" name="Genres" 
                            value="@string.Join(", ", Model.Book.IdGenres.Select(g => g.Name))" 
                            class="form-control" />
                 </div>
@@ -71,3 +74,18 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('CoverImage').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('coverPreview').src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
+
+<script src="/js/uploadCover.js"></script>

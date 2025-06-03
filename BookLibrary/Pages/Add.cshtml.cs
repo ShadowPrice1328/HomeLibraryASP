@@ -25,9 +25,6 @@ public class AddModel : PageModel
     [Range(0, int.MaxValue, ErrorMessage = "{0} must be a valid year")]
     public int YearInput { get; set; }
 
-
-    // [BindProperty]
-    // public string UploadedFilePath { get; set; } = string.Empty;
     public AddModel(ILogger<AddModel> logger, IBookRepository bookRepository, IWebHostEnvironment environment)
     {
         _logger = logger;
@@ -44,11 +41,6 @@ public class AddModel : PageModel
         catch
         {
             ModelState.AddModelError("YearInput", "Invalid year value.");
-            return Page();
-        }
-
-        if (!ModelState.IsValid)
-        {
             return Page();
         }
 
