@@ -66,11 +66,11 @@ public partial class AppDbContext : DbContext
                     "BooksAuthor",
                     r => r.HasOne<Author>().WithMany()
                         .HasForeignKey("IdAuthor")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .HasConstraintName("fk_Books_Authors__Authors"),
                     l => l.HasOne<Book>().WithMany()
                         .HasForeignKey("IdBook")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .HasConstraintName("fk_Books_Authors__Books"),
                     j =>
                     {
@@ -85,11 +85,11 @@ public partial class AppDbContext : DbContext
                     "BooksGenre",
                     r => r.HasOne<Genre>().WithMany()
                         .HasForeignKey("IdGenre")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .HasConstraintName("fk_Books_Genres__Genres"),
                     l => l.HasOne<Book>().WithMany()
                         .HasForeignKey("IdBook")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .HasConstraintName("fk_Books_Genres__Books"),
                     j =>
                     {

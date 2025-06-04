@@ -45,9 +45,12 @@
                 <button class="btn mx-1" style="width: 40px; height: 40px; " onclick="location.href='/Edit?id=@book.IdBook'">
                     <i class="fa-solid fa-pen"></i>
                 </button>
-                <button class="btn mx-1" style="width: 40px; height: 40px;" onclick="confirmDelete()">
-                    <i class="fa-solid fa-trash"></i>
-                </button>
+                <form method="post" asp-page="/Library" asp-page-handler="Delete" onsubmit="return confirmDelete(event);">
+                    <input type="hidden" name="id" value="@book.IdBook" />
+                    <button type="submit" class="btn mx-1" style="width: 40px; height: 40px;">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </form>
             </div>
         </div>
     }
@@ -64,5 +67,5 @@ else
     </div>
 }
 
-<script src="../js/confirmDelete.js">
+<script src="/js/confirmDelete.js">
 </script>

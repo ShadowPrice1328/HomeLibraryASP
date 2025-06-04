@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using BookLibrary.Models;
 using BookLibrary.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BookLibrary.Pages;
 
@@ -21,8 +22,21 @@ public class LibraryModel : PageModel
     public void OnGet()
     {
         _books = _bookRepository.ReadBooks();
-    
+
         Books = _books;
         BooksTotalCount = _books.Count;
     }
+    
+    public IActionResult OnPostDelete(int id)
+    {
+        var book = _bookRepository.ReadBook(id);
+        if (book == null)
+        {
+            return NotFound();
+        }
+
+        _bookRepository.DeleteBook(id);
+        return RedirectToPage("/Library");
+    }
+
 }
